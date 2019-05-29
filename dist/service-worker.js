@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/precache-manifest.ddd35a9e4c37dedf1b7c7999cae89f05.js"
+  "/precache-manifest.166d9ccc07f38a88422cd5136649382d.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "gtensor"});
