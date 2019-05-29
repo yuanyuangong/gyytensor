@@ -6,8 +6,18 @@
                qq群 <a style="cursor:pointer; color:" id="qqnumber" @click="copy"> 660357555 </a>
            </div>
            <div class="gy-card">
-            需要的技能：
+                需要的技能：
+                <div class="row text-center" >
+                    <div class="col-6" style="padding-top:12px" v-for="(item,index) in skills" :key="index">
+                        <div class="palette" :class="item.class">
+                            {{item.skillname}}
+                        </div>
+                    </div>
+                </div>
 
+           </div>
+           <div class="palette palette-clouds">
+               GITHUB: 
            </div>
        </div>
        <div class="col-8">
@@ -28,10 +38,33 @@ export default {
     },
     data(){
         return {
+            skills:[
+                {
+                    skillname:'VUE',
+                    class:'palette-turquoise'
+                },
+                {
+                    skillname:'TENSORFLOW',
+                    class:'palette-peter-river'
+                },
+                {
+                    skillname:'ECHARTS',
+                    class:'palette-amethyst'
+                },
+            ],
             points:[
                  {
+                    pointColor: 'yellow', // important! the color of every time point and you can use red yellow or green *关键点颜色 可选red yellow green
+                    img: '', // img url for every time point 图片地址 可留空
+                    title: '线性回归应用开发--下期实践', // important! title *时间点标题
+                    text: '导入excel训练模型，输入或导入execel数据预测对应值', // important! the content you want show *时间点内容
+                    linkUrl: '', // url for read more 链接url 留空则不显示按钮
+                    linkText: 'Read detail', // show what in read for more button 按钮显示内容 默认为Read more
+                    date: '' // time of the point 时间点
+                },
+                 {
                     pointColor: 'red', // important! the color of every time point and you can use red yellow or green *关键点颜色 可选red yellow green
-                    img: '../../assets/images/icons/clocks.svg', // img url for every time point 图片地址 可留空
+                    img: '', // img url for every time point 图片地址 可留空
                     title: '手写字识别', // important! title *时间点标题
                     text: '学习图片卷积原理', // important! the content you want show *时间点内容
                     linkUrl: '', // url for read more 链接url 留空则不显示按钮
@@ -40,7 +73,7 @@ export default {
                 },
                 {
                     pointColor: 'green', // important! the color of every time point and you can use red yellow or green *关键点颜色 可选red yellow green
-                    img: '../../assets/images/icons/clocks.svg', // img url for every time point 图片地址 可留空
+                    img: '', // img url for every time point 图片地址 可留空
                     title: '线性回归', // important! title *时间点标题
                     text: '学习演示', // important! the content you want show *时间点内容
                     linkUrl: '', // url for read more 链接url 留空则不显示按钮

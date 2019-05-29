@@ -17,4 +17,7 @@
     padding:16px;
     font-size: 14px;
   }
+  .text-center{
+    text-align: center
+  }
 </style>
