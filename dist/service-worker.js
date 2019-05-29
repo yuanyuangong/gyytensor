@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "https://yuanyuangong.github.io/gyytensor/dist/precache-manifest.a452217dafcbbbf3dad8f2cb3ad31356.js"
+  "precache-manifest.f7dc4e9be7b8d74133b28298b44fec98.js"
 );
 
 workbox.core.setCacheNameDetails({prefix: "gtensor"});
