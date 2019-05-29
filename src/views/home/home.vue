@@ -17,7 +17,7 @@
 
            </div>
            <div class="palette palette-clouds">
-               GITHUB: 
+               GITHUB: <a style="cursor:pointer; font-size:12px" href="https://github.com/yuanyuangong/gyytensor.git">https://github.com/yuanyuangong/gyytensor.git</a>
            </div>
        </div>
        <div class="col-8">
