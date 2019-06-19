@@ -24,6 +24,9 @@ export default new Router({
           path: 'imgtrain',name: '图片训练',component: () => import('@/views/home/imgtrain')
         },
         {
+          path: 'crawler',name: '爬虫',component: () => import('@/views/home/crawler')
+        },
+        {
           path: 'test', name: '测试',component: () => import('@/views/home/test.vue')
         }
       ]

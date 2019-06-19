@@ -20,6 +20,7 @@
                GITHUB: <a style="cursor:pointer; font-size:12px" href="https://github.com/yuanyuangong/gyytensor.git">https://github.com/yuanyuangong/gyytensor.git</a>
            </div>
        </div>
+
        <div class="col-8">
             <div class="palette palette-turquoise">
                <img src="../../assets/images/icons/clocks.svg" alt="Watches" style="height:20px;margin-right:4px"> 时之回廊
@@ -28,13 +29,50 @@
                  <timeLine :points="points"></timeLine>
             </div>
        </div>
+
     </div>
 </template>
+
 <script>
 import timeLine from '../../components/timeline.vue'
 export default {
     components:{
         timeLine
+    },
+    mounted(){
+        
+let data = []
+let a =1
+for(let i=0;i<24;i++){
+    let li=[]
+    if(i%2!=0  &&24>i&&i>6){a++}
+    for(let j=0;j<24;j++){
+
+      if(5>i&&i>3){
+         
+        if(4>j&&j>1){
+            li.push(1)
+        }else{
+            li.push(0)
+        }
+      }else if(24>i&&i>6){
+      
+          
+        if((20-a)>j&&j>(15-a)){
+        
+          li.push(1)
+        }else{
+             li.push(0)
+        }
+      }else{
+          li.push(0)
+      }
+      
+    }
+
+  data.push(li)
+}
+console.log(data)
     },
     data(){
         return {

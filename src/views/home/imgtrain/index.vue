@@ -194,25 +194,18 @@ export default {
         //内存资源更多，但不能保证性能更好。
 
         const batchSize = 640; //批处理大小
-
         // Leave out the last 15% of the training data for validation, to monitor
         // overfitting during training.
         const validationSplit = 0.15;//取15%的训练数据做验证测试
-
         // Get number of training epochs from the UI.
-        const trainEpochs = 100;//训练时间
+        const trainEpochs = 100;//训练轮数
 
         // We'll keep a buffer of loss and accuracy values over time.
         let trainBatchCount = 0;
-
         const trainData = vue.datas.getTrainData();
-        
         const testData = vue.datas.getTestData();
-
-        const totalNumBatches =Math.ceil(trainData.xs.shape[0] * (1 - validationSplit) / batchSize) * trainEpochs;
+        const totalNumBatches =Math.ceil(trainData.xs.shape[0] * (1 - validationSplit) / batchSize) * trainEpochs; //总共要训练的次数
         //四舍五入
-     
-
         let valAcc;
          // fit 知道怎么用就行
         await model.fit(trainData.xs, trainData.labels, {
@@ -226,7 +219,6 @@ export default {
               console.log(batch)
               vue.progress = `${(trainBatchCount / totalNumBatches * 100).toFixed(1)}%`
               ui.plotLoss(trainBatchCount, logs.loss, 'train');//绘制损失曲线
-
               ui.plotAccuracy(trainBatchCount, logs.acc, 'train');//绘制精准值曲线
 
               //每10个数据验证一次模型
@@ -236,11 +228,9 @@ export default {
               }
 
               await tf.nextFrame();//进入下一个循环。
-
             },
             onEpochEnd: async (epoch, logs) => {
               valAcc = logs.val_acc;//返回验证 结果 
-            
               ui.plotLoss(trainBatchCount, logs.val_loss, 'validation');
               ui.plotAccuracy(trainBatchCount, logs.val_acc, 'validation');
               if (onIteration) {
@@ -255,9 +245,9 @@ export default {
         const testAccPercent = testResult[1].dataSync()[0] * 100;
         const finalValAccPercent = valAcc * 100;
 
-        vue.progress =
-          `Final validation accuracy: ${finalValAccPercent.toFixed(1)}%; ` +
-          `Final test accuracy: ${testAccPercent.toFixed(1)}%`;
+        // vue.progress =
+        //   `Final validation accuracy: ${finalValAccPercent.toFixed(1)}%; ` +
+        //   `Final test accuracy: ${testAccPercent.toFixed(1)}%`;
       },
 
           

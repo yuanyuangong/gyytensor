@@ -26,13 +26,28 @@ export function showTestResults(batch, predictions, labels) {
 
     div.appendChild(pred);
     div.appendChild(canvas);
-    let divList = imagesElement.getElementsByClassName('div')
-
 
     imagesElement.appendChild(div);
  
     // return canvas
   }
+}
+
+export function draw(image, canvas) {
+  const [width, height] = [28, 28];
+  canvas.width = width;
+  canvas.height = height;
+  const ctx = canvas.getContext('2d');
+  const imageData = new ImageData(width, height);
+  const data = image.dataSync();
+  for (let i = 0; i < height * width; ++i) {
+    const j = i * 4;
+    imageData.data[j + 0] = data[i] * 255;
+    imageData.data[j + 1] = data[i] * 255;
+    imageData.data[j + 2] = data[i] * 255;
+    imageData.data[j + 3] = 255;
+  }
+  ctx.putImageData(imageData, 0, 0);
 }
 
 
@@ -128,21 +143,4 @@ export function plotAccuracy(batch, accuracy, set) {
   }
   accuracyChart.setOption(option)
 
-}
-
-export function draw(image, canvas) {
-  const [width, height] = [28, 28];
-  canvas.width = width;
-  canvas.height = height;
-  const ctx = canvas.getContext('2d');
-  const imageData = new ImageData(width, height);
-  const data = image.dataSync();
-  for (let i = 0; i < height * width; ++i) {
-    const j = i * 4;
-    imageData.data[j + 0] = data[i] * 255;
-    imageData.data[j + 1] = data[i] * 255;
-    imageData.data[j + 2] = data[i] * 255;
-    imageData.data[j + 3] = 255;
-  }
-  ctx.putImageData(imageData, 0, 0);
 }
