@@ -9,6 +9,7 @@
             <li><router-link :to="'fitte'">线性回归<span class="navbar-unread">2</span></router-link></li>
             <li><router-link :to="'imgtrain'">手写字识别</router-link></li>
             <li><router-link :to="'crawler'">爬虫</router-link></li>
+            <li><router-link :to="'labyrinth'">闯迷宫</router-link></li>
             <li><router-link :to="'test'">Test</router-link></li>
             <!--             
             <li class="dropdown">

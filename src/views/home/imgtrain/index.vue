@@ -1,46 +1,45 @@
 <template>
     <div>
       <div class="row">
-            <div class="col-2">
-                <div class="gy-card">
-                    <button class="btn btn-block btn-lg btn-inverse" @click="startTrain" :disabled="isDisabled">获取数据</button>
+          <div class="col-2">
+              <div class="gy-card">
+                  <button class="btn btn-block btn-lg btn-inverse" @click="startTrain" :disabled="isDisabled">获取数据</button>
+              </div>
+          </div>
+          <div class="col-7">
+            <div class="palette palette-turquoise">状态：{{ status }}</div>
+            <div class="palette palette-green-sea" style="padding:8px">
+          
+              <div class="progress">
+                <div class="progress-bar" v-bind:class="progressClass" 
+                  :style="{width:progress}">
                 </div>
+              </div>
+
             </div>
-            <div class="col-7">
-              <div class="palette palette-turquoise">状态：{{ status }}</div>
-              <div class="palette palette-green-sea" style="padding:8px">
-            
-                <div class="progress">
-                  <div class="progress-bar" v-bind:class="progressClass" 
-                    :style="{width:progress}">
-                  </div>
+            <div class="row" >
+
+                <div class="col-6">
+
+                  <div id="loss-canvas" class="gy-card" style="min-width:200px;height:400px;margin-top:32px"></div>
                 </div>
-
-              </div>
-              <div class="row" >
-
-                  <div class="col-6">
-
-                    <div id="loss-canvas" class="gy-card" style="min-width:200px;height:400px;margin-top:32px"></div>
-                  </div>
-                  <div class="col-6">
-                    <div id="accuracy-canvas" class="gy-card" style="min-width:200px;height:400px;margin-top:32px"></div>
-                  </div>
-                
-              </div>
+                <div class="col-6">
+                  <div id="accuracy-canvas" class="gy-card" style="min-width:200px;height:400px;margin-top:32px"></div>
+                </div>
               
             </div>
-            <div class="col-3">
-              <div class="palette palette-peter-river">预测结果显示</div>
-              <div id="images" class="gy-flow-img"></div>
-            </div>
+            
+          </div>
+          <div class="col-3">
+            <div class="palette palette-peter-river">预测结果显示</div>
+            <div id="images" class="gy-flow-img"></div>
+          </div>
       </div>     
       
     </div>
 </template>
 <script>
 import * as tf from '@tensorflow/tfjs'
-
 import {IMAGE_H, IMAGE_W, MnistData} from './data'
 
 // This is a helper class for drawing loss graphs and MNIST images to the

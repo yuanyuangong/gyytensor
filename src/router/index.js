@@ -27,6 +27,9 @@ export default new Router({
           path: 'crawler',name: '爬虫',component: () => import('@/views/home/crawler')
         },
         {
+          path: 'labyrinth',name: '闯迷宫',component: () => import('@/views/home/labyrinth')
+        },
+        {
           path: 'test', name: '测试',component: () => import('@/views/home/test.vue')
         }
       ]
